@@ -1,0 +1,7 @@
+homework:
+1. change weather-details-service name to details-service
+2. change /weather to /search
+3. add university service
+   add provider service
+   into microservice
+   users can send request to gateway, and fetch data from provider / university service
