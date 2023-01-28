@@ -1,10 +1,10 @@
-package com.example.provider.service;
+package com.example.providers.service;
 
 
-import com.example.provider.exception.IllegalNullFieldException;
-import com.example.provider.exception.ResourceNotFound;
-import com.example.provider.pojo.entity.User;
-import com.example.provider.repository.UserRepository;
+import com.example.providers.exception.IllegalNullFieldException;
+import com.example.providers.exception.ResourceNotFound;
+import com.example.providers.pojo.entity.User;
+import com.example.providers.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

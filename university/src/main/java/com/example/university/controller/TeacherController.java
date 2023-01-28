@@ -7,12 +7,14 @@ import com.example.university.pojo.entity.Teacher;
 import com.example.university.service.impl.TeacherServiceImpl;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RefreshScope
 @EnableEurekaClient
 @RequestMapping("/university")
 public class TeacherController {

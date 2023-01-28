@@ -9,6 +9,7 @@ import com.example.university.service.impl.TeacherStudentServiceImpl;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ import java.util.Map;
 
 @RestController
 @EnableEurekaClient
+@RefreshScope
 @RequestMapping("/university")
 public class TeacherStudentController {
     private final TeacherStudentServiceImpl teacherStudentService;

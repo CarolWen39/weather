@@ -1,4 +1,4 @@
-package com.example.provider.exception;
+package com.example.providers.exception;
 
 public class IllegalNullFieldException extends RuntimeException{
     public IllegalNullFieldException(String msg) {

@@ -8,8 +8,10 @@
         <artifactId>weather</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-
+    <groupId>com.example</groupId>
     <artifactId>config</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>config</name>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>

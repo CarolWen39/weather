@@ -1,7 +1,7 @@
-package com.example.provider.service;
+package com.example.providers.service;
 
 
-import com.example.provider.pojo.entity.User;
+import com.example.providers.pojo.entity.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

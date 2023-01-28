@@ -12,6 +12,7 @@ import com.example.university.service.impl.StudentServiceImpl;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
+@RefreshScope
 @EnableEurekaClient
 @RequestMapping("/university/students")
 public class StudentController {
@@ -46,7 +48,7 @@ public class StudentController {
         return new ResponseEntity<>(service.getStuById(id), HttpStatus.OK);
     }
 
-    @PostMapping // post method 用户不会输入ID， ID一般是数据库自己生成
+    @PostMapping
     public ResponseEntity<StudentDTO> createStudent(@RequestBody JsonNode object) {
         Student student = new Student(object.get("name").asText());
 

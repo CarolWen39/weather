@@ -1,4 +1,4 @@
-package com.example.provider.pojo.entity;
+package com.example.providers.pojo.entity;
 
 import lombok.Data;
 import lombok.Getter;

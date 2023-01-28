@@ -1,8 +1,9 @@
-package com.example.provider.controller;
+package com.example.providers.controller;
 
-import com.example.provider.pojo.entity.User;
-import com.example.provider.service.UserService;
+import com.example.providers.pojo.entity.User;
+import com.example.providers.service.UserService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RefreshScope
 @RequestMapping("/usersinfo")
 @EnableEurekaClient
 public class UserController {

@@ -14,10 +14,9 @@
         <module>discovery</module>
         <module>gateway</module>
         <module>search</module>
-        <module>university</module>
-        <module>provider</module>
-        <module>common</module>
         <module>config</module>
+        <module>university</module>
+        <module>providers</module>
     </modules>
 
     <groupId>com.example</groupId>
@@ -39,6 +38,7 @@
             <version>1.18.20</version>
             <optional>true</optional>
         </dependency>
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

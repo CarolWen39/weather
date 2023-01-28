@@ -40,6 +40,6 @@ public class WeatherController {
 
     @GetMapping("/details/port")
     public ResponseEntity<?> queryWeatherByCity() {
-        return new ResponseEntity<>("weather service + " + randomServerPort, HttpStatus.OK);
+        return new ResponseEntity<>("details service + " + randomServerPort, HttpStatus.OK);
     }
 }

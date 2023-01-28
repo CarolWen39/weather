@@ -1,7 +1,7 @@
-package com.example.provider.repository;
+package com.example.providers.repository;
 
 
-import com.example.provider.pojo.entity.User;
+import com.example.providers.pojo.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
