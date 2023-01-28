@@ -69,4 +69,8 @@ public class User {
                 ", dob='" + dob + '\'' +
                 '}';
     }
+
+    public long getId() {
+        return id;
+    }
 }

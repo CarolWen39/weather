@@ -17,6 +17,7 @@
         <module>university</module>
         <module>provider</module>
         <module>common</module>
+        <module>config</module>
     </modules>
 
     <groupId>com.example</groupId>
