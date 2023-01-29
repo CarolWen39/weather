@@ -8,7 +8,7 @@ homework:
 
 
 1. add both university and employee service in to weather project (✅)
-2. create api in search service
+2. create api in search service (✅)
     this api should fetch data from both university and employee service (any data)
     use completablefuture with multithreading to send requests
     use ribbon + resttemplate

@@ -1,6 +1,6 @@
 package com.example.search.controller;
 
-import com.example.search.service.SearchService;
+
 import com.example.search.service.SearchServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,6 +8,8 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.concurrent.CompletableFuture;
 
 @RestController
 @RefreshScope
@@ -29,49 +31,58 @@ public class SearchController {
     }
 
     @GetMapping("/students")
-    public ResponseEntity<?> getAllStudents() {
-        return new ResponseEntity<>(searchService.allStudents(), HttpStatus.OK);
+    public CompletableFuture<?> getAllStudents() {
+        return searchService.allStudents().thenApply(ResponseEntity::ok);
     }
+//    @GetMapping("/students")
+//    public ResponseEntity<?> getAllStudents() {
+//        CompletableFuture<?> students1 = searchService.allStudents();
+//        CompletableFuture<?> students2 = searchService.allStudents();
+//        CompletableFuture<?> students3 = searchService.allStudents();
+//        CompletableFuture.allOf(students1, students2, students3).join();
+//        return ResponseEntity.status(HttpStatus.OK).build();
+//    }
 
     @GetMapping("/students/{id}")
-    public ResponseEntity<?> getStudentById(@PathVariable String id) {
-        return new ResponseEntity<>(searchService.studentById(id), HttpStatus.OK);
+    public CompletableFuture<?> getStudentById(@PathVariable String id) {
+        return searchService.studentById(id).thenApply(ResponseEntity::ok);
+
     }
 
     @GetMapping("/teachers")
-    public ResponseEntity<?> getAllTeachers() {
-        return new ResponseEntity<>(searchService.allTeachers(), HttpStatus.OK);
+    public CompletableFuture<?> getAllTeachers() {
+        return searchService.allTeachers().thenApply(ResponseEntity::ok);
     }
 
     @GetMapping("/teachers/{id}")
-    public ResponseEntity<?> getTeacherById(@PathVariable String id) {
-        return new ResponseEntity<>(searchService.teacherById(id), HttpStatus.OK);
+    public CompletableFuture<?> getTeacherById(@PathVariable String id) {
+        return searchService.teacherById(id).thenApply(ResponseEntity::ok);
     }
 
     @GetMapping("/teacher_students")
-    public ResponseEntity<?> getAllTeacherStudents() {
-        return new ResponseEntity<>(searchService.allTeacherStudents(), HttpStatus.OK);
+    public CompletableFuture<?> getAllTeacherStudents() {
+        return searchService.allTeacherStudents().thenApply(ResponseEntity::ok);
     }
 
     @GetMapping(path = "/teacher_students",params = "teacher")
-    public ResponseEntity<?> getByTeacherId(@RequestParam String teacher) {
-        return new ResponseEntity<>(searchService.teacherStudentByTeacher(teacher), HttpStatus.OK);
+    public CompletableFuture<?> getByTeacherId(@RequestParam String teacher) {
+        return searchService.teacherStudentByTeacher(teacher).thenApply(ResponseEntity::ok);
     }
     @GetMapping(path = "/teacher_students",params = "student")
-    public ResponseEntity<?> getByStudentId(@RequestParam String student) {
-        return new ResponseEntity<>(searchService.teacherStudentByStudent(student), HttpStatus.OK);
+    public CompletableFuture<?> getByStudentId(@RequestParam String student) {
+        return searchService.teacherStudentByStudent(student).thenApply(ResponseEntity::ok);
     }
     @GetMapping(path = "/teacher_students",params = {"teacher", "student"})
-    public ResponseEntity<?> getByTeacherIdAndStudentId(@RequestParam String teacher, @RequestParam String student) {
-        return new ResponseEntity<>(searchService.teacherStudentsById(teacher, student), HttpStatus.OK);
+    public CompletableFuture<?> getByTeacherIdAndStudentId(@RequestParam String teacher, @RequestParam String student) {
+        return searchService.teacherStudentsById(teacher, student).thenApply(ResponseEntity::ok);
     }
     @GetMapping("/employees")
-    public ResponseEntity<?> getAllEmployees() {
-        return new ResponseEntity<>(searchService.allUsers(), HttpStatus.OK);
+    public CompletableFuture<?> getAllEmployees() {
+        return searchService.allUsers().thenApply(ResponseEntity::ok);
     }
 
     @GetMapping("/employees/{id}")
-    public ResponseEntity<?> getAllEmployees(@PathVariable Long id) {
-        return new ResponseEntity<>(searchService.userById(id), HttpStatus.OK);
+    public CompletableFuture<?> getAllEmployees(@PathVariable Long id) {
+        return searchService.userById(id).thenApply(ResponseEntity::ok);
     }
 }
