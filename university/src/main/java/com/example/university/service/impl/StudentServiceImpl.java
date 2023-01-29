@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -32,7 +33,7 @@ public class StudentServiceImpl implements StudentService {
         Collection<Student> studentCollection = studentRepository.findAll();
         List<StudentDTO> studentDTOS = studentCollection
                 .stream()
-                .map(s -> new StudentResponseDTO.StudentDTO(s))
+                .map(s -> new StudentDTO(s))
                 .collect(Collectors.toList());
 
         return new StudentResponseDTO(studentDTOS);
@@ -40,11 +41,13 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     @Transactional
-    public StudentDTO getStuById(String id) {
+    public StudentResponseDTO getStuById(String id) {
         Optional<Student> student = studentRepository.findById(id);
         if(!student.isPresent())
             throw new ResourceNotFoundException("Student " + id + " not found!");
-        return new StudentDTO(student.get());
+        List<StudentDTO> studentDto = new ArrayList<>();
+        studentDto.add(new StudentDTO(student.get()));
+        return new StudentResponseDTO(studentDto);
     }
 
     @Override

@@ -18,6 +18,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RefreshScope
@@ -25,27 +27,22 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/university/students")
 public class StudentController {
     private final StudentServiceImpl service;
-//    @Value("${server.port}")
-//    private int randomServerPort;
-//    @GetMapping("/port")
-//    public ResponseEntity<?> queryWeatherByCity() {
-//        return new ResponseEntity<>("university service + " + randomServerPort, HttpStatus.OK);
-//    }
     @Autowired
     public StudentController(StudentServiceImpl service, StudentRepository studentRepository) {
         this.service = service;
     }
 
     @GetMapping
-    public ResponseEntity<StudentResponseDTO> getAllStudents(@RequestParam(required = false) String name) {
-        StudentResponseDTO studentList = service.getAllStu();
+    public ResponseEntity<?> getAllStudents(@RequestParam(required = false) String name) {
+//        StudentResponseDTO studentList = service.getAllStu();
+//        return new ResponseEntity<>(studentList, HttpStatus.OK);
+        List<StudentDTO> studentList = service.getAllStu().getStudentList();
         return new ResponseEntity<>(studentList, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<StudentDTO> getStudent(@PathVariable String id) {
-
-        return new ResponseEntity<>(service.getStuById(id), HttpStatus.OK);
+    public ResponseEntity<?> getStudent(@PathVariable String id) {
+        return new ResponseEntity<>(service.getStuById(id).getStudentList(), HttpStatus.OK);
     }
 
     @PostMapping

@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -80,11 +81,13 @@ public class TeacherStudentServiceImpl implements TeacherStudentService {
 
     @Override
     @Transactional
-    public Teacher_StudentDTO findByTeacherAndStudent(String tid, String sid) {
+    public Teacher_StudentResponseDTO findByTeacherAndStudent(String tid, String sid) {
         Teacher_Student teacherStudent = teacherStudentRepository.findByTeacherAndStudent(tid, sid);
         if(teacherStudent == null)
             throw new ResourceNotFoundException("This relationship not exist in Junction Table!");
-        return new Teacher_StudentDTO(teacherStudent);
+        List<Teacher_StudentDTO> teacherStudentDtos = new ArrayList<>();
+        teacherStudentDtos.add(new Teacher_StudentDTO(teacherStudent));
+        return new Teacher_StudentResponseDTO(teacherStudentDtos);
     }
 
     @Override

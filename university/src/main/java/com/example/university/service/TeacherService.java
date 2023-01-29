@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface TeacherService {
     TeacherResponseDTO getAllTea();
-    TeacherResponseDTO.TeacherDTO getTeaById(String id);
+    TeacherResponseDTO getTeaById(String id);
     Teacher insertTeacher(Teacher t);
 
     Teacher updateTeacher(String id, Teacher t);

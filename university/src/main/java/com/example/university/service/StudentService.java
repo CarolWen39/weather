@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface StudentService {
     StudentResponseDTO getAllStu();
-    StudentDTO getStuById(String id);
+    StudentResponseDTO getStuById(String id);
     Student insertStudent(Student s);
     Student updateStudent(String id, Student s);
     void deleteStudent(String id);

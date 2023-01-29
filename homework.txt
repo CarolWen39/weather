@@ -12,5 +12,5 @@ homework:
     this api should fetch data from both university and employee service (any data)
     use completablefuture with multithreading to send requests
     use ribbon + resttemplate
-3. fix university / employee service issues
+3. fix university / employee service issues (✅)
 4. Use spring cloud config + RSA encryption to encrypt properties (✅)

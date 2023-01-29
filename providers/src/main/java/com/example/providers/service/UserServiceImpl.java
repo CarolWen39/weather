@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -26,6 +27,15 @@ public class UserServiceImpl implements UserService{
         if(users == null)
             throw new ResourceNotFound("Users not found!");
         return users;
+    }
+
+    @Override
+    public List<User> getUserById(Long id) {
+        List<User> user = new ArrayList<>();
+        if(this.userRepository.findById(id).get() == null)
+            throw new ResourceNotFound("User " + id + " not exists!");
+        user.add(this.userRepository.findById(id).get());
+        return user;
     }
 
     @Override

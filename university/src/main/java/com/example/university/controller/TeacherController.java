@@ -26,14 +26,13 @@ public class TeacherController {
     }
 
     @GetMapping("/teachers")
-    public ResponseEntity<TeacherResponseDTO> getTea(@RequestParam(required = false) String name) {
-        TeacherResponseDTO teacherList = service.getAllTea();
-        return new ResponseEntity<>(teacherList, HttpStatus.OK);
+    public ResponseEntity<?> getTea(@RequestParam(required = false) String name) {
+        return new ResponseEntity<>(service.getAllTea().getTeacherList(), HttpStatus.OK);
     }
 
     @GetMapping("/teachers/{id}")
-    public ResponseEntity<TeacherDTO> getTeaById(@PathVariable String id) {
-        return new ResponseEntity<>(service.getTeaById(id), HttpStatus.OK);
+    public ResponseEntity<?> getTeaById(@PathVariable String id) {
+        return new ResponseEntity<>(service.getTeaById(id).getTeacherList(), HttpStatus.OK);
     }
 
     @PostMapping("/teachers")

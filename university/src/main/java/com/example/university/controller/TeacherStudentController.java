@@ -29,20 +29,20 @@ public class TeacherStudentController {
         this.teacherStudentService = teacherStudentService;
     }
     @GetMapping("/teacher_students")
-    public ResponseEntity<Teacher_StudentResponseDTO> getAllJunction() {
-        return new ResponseEntity<>(teacherStudentService.getAllTeacher_Student(), HttpStatus.OK);
+    public ResponseEntity<?> getAllJunction() {
+        return new ResponseEntity<>(teacherStudentService.getAllTeacher_Student().getTeacherStudentList(), HttpStatus.OK);
     }
     @GetMapping(path = "/teacher_students",params = "teacher")
-    public ResponseEntity<Teacher_StudentResponseDTO> getByTeacherId(@RequestParam String teacher) {
-        return new ResponseEntity<>(teacherStudentService.findByTeacher(teacher), HttpStatus.OK);
+    public ResponseEntity<?> getByTeacherId(@RequestParam String teacher) {
+        return new ResponseEntity<>(teacherStudentService.findByTeacher(teacher).getTeacherStudentList(), HttpStatus.OK);
     }
     @GetMapping(path = "/teacher_students",params = "student")
-    public ResponseEntity<Teacher_StudentResponseDTO> getByStudentId(@RequestParam String student) {
-        return new ResponseEntity<>(teacherStudentService.findByStudent(student), HttpStatus.OK);
+    public ResponseEntity<?> getByStudentId(@RequestParam String student) {
+        return new ResponseEntity<>(teacherStudentService.findByStudent(student).getTeacherStudentList(), HttpStatus.OK);
     }
     @GetMapping(path = "/teacher_students",params = {"teacher", "student"})
-    public ResponseEntity<Teacher_StudentDTO> getByTeacherIdAndStudentId(@RequestParam String teacher, @RequestParam String student) {
-        return new ResponseEntity<>(teacherStudentService.findByTeacherAndStudent(teacher, student), HttpStatus.OK);
+    public ResponseEntity<?> getByTeacherIdAndStudentId(@RequestParam String teacher, @RequestParam String student) {
+        return new ResponseEntity<>(teacherStudentService.findByTeacherAndStudent(teacher, student).getTeacherStudentList(), HttpStatus.OK);
     }
 
     @PostMapping("/teacher_students")

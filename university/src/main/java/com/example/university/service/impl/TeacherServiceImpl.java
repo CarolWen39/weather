@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -41,11 +42,13 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     @Transactional
-    public TeacherDTO getTeaById(String id) {
+    public TeacherResponseDTO getTeaById(String id) {
         Optional<Teacher> teacher = teacherRepository.findById(id);
         if(!teacher.isPresent())
             throw new ResourceNotFoundException("Teacher " + id + " not found!");
-        return new TeacherDTO(teacher.get());
+        List<TeacherDTO> teacherDto = new ArrayList<>();
+        teacherDto.add(new TeacherDTO(teacher.get()));
+        return new TeacherResponseDTO(teacherDto);
     }
 
     @Override

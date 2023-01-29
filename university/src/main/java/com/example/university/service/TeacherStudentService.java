@@ -14,7 +14,7 @@ public interface TeacherStudentService {
     Teacher_StudentResponseDTO getAllTeacher_Student();
     Teacher_StudentResponseDTO findByTeacher(String tid);
     Teacher_StudentResponseDTO findByStudent(String sid);
-    Teacher_StudentResponseDTO.Teacher_StudentDTO findByTeacherAndStudent(String tid, String sid);
+    Teacher_StudentResponseDTO findByTeacherAndStudent(String tid, String sid);
 
     // post
     Teacher_Student insertTeacher_Student(Teacher teacher, Student student);

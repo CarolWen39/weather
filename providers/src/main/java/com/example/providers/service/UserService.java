@@ -9,5 +9,7 @@ import java.util.List;
 @Service
 public interface UserService {
     List<User> getAllUsers();
+
+    List<User> getUserById(Long id);
     Long insertUser(User u);
 }
